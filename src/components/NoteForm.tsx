@@ -1,6 +1,6 @@
-import Button from '@mui/material/Button';
-import { TextField } from "@mui/material"
-import React, { FC, useState, forwardRef, RefObject } from 'react';
+import Button from "@mui/material/Button";
+import { TextField } from "@mui/material";
+import React, { FC, useState, forwardRef, RefObject } from "react";
 
 interface NoteFormProps {
   addNote: (text: string) => void;
@@ -8,27 +8,31 @@ interface NoteFormProps {
 }
 
 const NoteForm: FC<NoteFormProps> = forwardRef(({ addNote, inputRef }) => {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (text.trim()) {
       addNote(text);
-      setText('');
+      setText("");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField 
-        label="Name" variant="outlined" fullWidth
+      <TextField
+        label="Name"
+        variant="outlined"
+        fullWidth
         ref={inputRef} // Použití ref pro zadávání úkolu
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a new note"
       />
-      <Button variant="contained" type="submit">Add Note</Button>
+      <Button variant="contained" type="submit">
+        Add Note
+      </Button>
     </form>
   );
 });

@@ -1,6 +1,6 @@
 // server.js
-import express from "express"
-import cors from "cors"
+import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = 5000;
@@ -8,26 +8,26 @@ const PORT = 5000;
 let notes = [];
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // Get all notes
-app.get('/api/notes', (req, res) => {
+app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
 // Add a new note
-app.post('/api/notes', (req, res) => {
+app.post("/api/notes", (req, res) => {
   const newNote = { id: Date.now(), text: req.body.text };
   notes.push(newNote);
   res.json(newNote);
 });
 
 // Update a note
-app.put('/api/notes/:id', (req, res) => {
+app.put("/api/notes/:id", (req, res) => {
   const noteId = parseInt(req.params.id);
   const updatedText = req.body.text;
 
-  const noteIndex = notes.findIndex(note => note.id === noteId);
+  const noteIndex = notes.findIndex((note) => note.id === noteId);
   if (noteIndex !== -1) {
     notes[noteIndex].text = updatedText;
     res.json({ success: true, updatedNote: notes[noteIndex] });
@@ -37,8 +37,8 @@ app.put('/api/notes/:id', (req, res) => {
 });
 
 // Delete a note
-app.delete('/api/notes/:id', (req, res) => {
-  notes = notes.filter(note => note.id !== parseInt(req.params.id));
+app.delete("/api/notes/:id", (req, res) => {
+  notes = notes.filter((note) => note.id !== parseInt(req.params.id));
   res.json({ success: true });
 });
 
