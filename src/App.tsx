@@ -1,9 +1,8 @@
-import { Typography, Container, Grid2 } from "@mui/material";
-
 import { FC, useState, useRef, useEffect } from "react";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
-
+import { Container, Card, Col, Row } from "react-bootstrap";
+import "./App.css";
 import {
   fetchNotes,
   createNote,
@@ -43,17 +42,26 @@ const App: FC = () => {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h1">Notes</Typography>
-      <Grid2
-        container
-        justifyContent="center"
-        alignItems="center"
-        style={{ minHeight: "100vh" }}
-      >
-        <NoteForm addNote={addNote} inputRef={inputRef} />
-        <NoteList notes={notes} deleteNote={deleteNote} editNote={editNote} />
-      </Grid2>
+    <Container className="my-min-width">
+      <Row className="d-flex justify-content-center align-items-center flex-column pt-5 m-5">
+        <Col md={12}>
+          <Card>
+            <Card.Body className="p-5 bg-light">
+              <h1>Notepad</h1>
+              <div className="mt-4">
+                <NoteForm addNote={addNote} inputRef={inputRef} />
+              </div>
+              <div>
+                <NoteList
+                  notes={notes}
+                  deleteNote={deleteNote}
+                  editNote={editNote}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

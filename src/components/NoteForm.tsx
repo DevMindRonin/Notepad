@@ -1,10 +1,9 @@
-import Button from "@mui/material/Button";
-import { TextField } from "@mui/material";
 import React, { FC, useState, forwardRef, RefObject } from "react";
+import { Button, Form } from "react-bootstrap";
 
 interface NoteFormProps {
   addNote: (text: string) => void;
-  inputRef: RefObject<HTMLInputElement>; // Ref bude předán přes props
+  inputRef: RefObject<HTMLInputElement>;
 }
 
 const NoteForm: FC<NoteFormProps> = forwardRef(({ addNote, inputRef }) => {
@@ -19,21 +18,21 @@ const NoteForm: FC<NoteFormProps> = forwardRef(({ addNote, inputRef }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextField
-        label="Name"
-        variant="outlined"
-        fullWidth
-        ref={inputRef} // Použití ref pro zadávání úkolu
+    <Form onSubmit={handleSubmit}>
+      <Form.Control
+        ref={inputRef}
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a new note"
+        className="form-content"
       />
-      <Button variant="contained" type="submit">
-        Add Note
-      </Button>
-    </form>
+      <div>
+        <Button type="submit" variant="success" className="mt-3">
+          Add Note
+        </Button>
+      </div>
+    </Form>
   );
 });
 

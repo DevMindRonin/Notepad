@@ -5,13 +5,26 @@ import cors from "cors";
 const app = express();
 const PORT = 5000;
 
-let notes = [];
+let notes = [
+  {
+    id: 4564657894536415,
+    text: "Vacuum the car",
+  },
+  {
+    id: 56566568453664153,
+    text: "Walk the dog",
+  },
+  {
+    id: 5665684553664563,
+    text: "Shop for sunday",
+  },
+];
 
 app.use(express.json());
 app.use(cors());
 
 // Get all notes
-app.get("/api/notes", (req, res) => {
+app.get("/api/notes", (res) => {
   res.json(notes);
 });
 
