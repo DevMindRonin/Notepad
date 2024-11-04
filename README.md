@@ -6,5 +6,6 @@ A simple notebook using CRUD methods to
 - update and 
 - delete notes
 
-For the UI, I used Material UI from Google.
-Application written in React Typescript.
+Application written in React Typescript and for the UI, I used Bootstrap.
+
+![Obrázek](./src/images/notepad-printscreen.jpg)
