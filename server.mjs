@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 // Get all notes
-app.get("/api/notes", (res) => {
+app.get("/api/notes", (req, res) => {
   res.json(notes);
 });
 
